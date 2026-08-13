@@ -373,19 +373,31 @@ footer{padding:3rem 0 2.6rem;font-size:14px;color:var(--body)}
    whole design marooned in the middle 47% of the display. Root font-size does the heavy
    lifting past 1800px so every rem-based size, gap and pad scales together. */
 @media(min-width:1500px){
-  :root{--wrap:1340px}
-  .hero h1{font-size:clamp(4.9rem,5.6vw,6.1rem)}
-  .hero .lede{font-size:1.24rem;max-width:64ch}
+  :root{--wrap:1420px}
+  .hero h1{font-size:clamp(4.9rem,5.8vw,6.6rem);max-width:22ch}
+  .hero .lede{font-size:1.26rem;max-width:66ch}
   .hero{padding:9.4rem 0 3.4rem}
 }
 @media(min-width:1800px){
   html{font-size:17px}
-  :root{--wrap:1460px}
+  :root{--wrap:1600px}
 }
 @media(min-width:2200px){
   html{font-size:18px}
-  :root{--wrap:1580px}
+  :root{--wrap:1760px}
 }
+
+/* ============ SECTION-HEAD MEASURE (Aug 13) ============
+   The bug behind "it doesn't scale on a computer": these intro blocks capped the WHOLE block
+   at ~62ch, and `ch` is measured against the block's own 16-18px body text — about 600px. The
+   h2 inside renders at 3-4x that size, so a measure that reads perfectly for the paragraph
+   strangled the headline into 3-4 short lines while the cards underneath spanned 1600px.
+   Fix: cap the paragraph (where measure actually aids reading) and give the headline its own
+   cap in ch — which, being relative to the h2's own font-size, grows WITH the headline. */
+.sec-head{text-align:center;margin-inline:auto}
+.sec-head h2{max-width:20ch;margin-inline:auto}
+.sec-head p{max-width:62ch;margin-inline:auto}
+@media(min-width:1500px){ .sec-head h2{max-width:24ch} }
 </style>
 </head>
 <body>
@@ -434,7 +446,7 @@ footer{padding:3rem 0 2.6rem;font-size:14px;color:var(--body)}
 
 <!-- ================= SYMPTOMS ================= -->
 <section id="help"><div class="wrap">
-  <div style="text-align:center;max-width:62ch;margin:0 auto 3.2rem" class="rv">
+  <div style="margin:0 auto 3.2rem" class="rv sec-head">
     <span class="eyebrow">Who we help</span>
     <h2 class="big">Do any of these symptoms feel familiar?</h2>
     <p style="font-size:1.07rem">After suffering a brain injury, many people unfortunately experience new difficulty with concentration, memory, problem solving, and word-finding. These things aren’t personality traits and they are not permanent — they’re symptoms, and they respond to treatment.</p>
@@ -488,7 +500,7 @@ footer{padding:3rem 0 2.6rem;font-size:14px;color:var(--body)}
 
 <!-- ================= PROCESS ================= -->
 <section id="process" style="padding-top:2rem"><div class="wrap">
-  <div style="text-align:center;max-width:56ch;margin:0 auto 3rem" class="rv">
+  <div style="margin:0 auto 3rem" class="rv sec-head">
     <span class="eyebrow">How it works</span>
     <h2 class="big">Four steps, start to independence</h2>
   </div>
@@ -502,7 +514,7 @@ footer{padding:3rem 0 2.6rem;font-size:14px;color:var(--body)}
 
 <!-- ================= LICENSURE MAP ================= -->
 <section id="states" style="padding-top:3.4rem;padding-bottom:1rem"><div class="wrap">
-  <div style="text-align:center;max-width:60ch;margin:0 auto" class="rv">
+  <div style="margin:0 auto" class="rv sec-head">
     <span class="eyebrow">Where we practice</span>
     <h2 class="big">Licensed in 25 states — and counting</h2>
   </div>
@@ -520,7 +532,7 @@ footer{padding:3rem 0 2.6rem;font-size:14px;color:var(--body)}
 
 <!-- ================= TEAM ================= -->
 <section id="team" style="padding-top:2rem"><div class="wrap">
-  <div style="text-align:center;max-width:62ch;margin:0 auto 3rem" class="rv">
+  <div style="margin:0 auto 3rem" class="rv sec-head">
     <span class="eyebrow">Our team</span>
     <h2 class="big">Twelve licensed speech pathologists</h2>
     <p style="font-size:1.05rem">Every clinician holds a Master's degree and ASHA's Certificate of Clinical Competence. Our services are offered in English and Spanish. Tap anyone to read their background.</p>
@@ -554,7 +566,7 @@ footer{padding:3rem 0 2.6rem;font-size:14px;color:var(--body)}
 
 <!-- ================= PARTNER WITH US (Aug 12, Tyler's copy verbatim) ================= -->
 <section id="partner" style="padding-top:3.6rem"><div class="wrap">
-  <div style="text-align:center;max-width:64ch;margin:0 auto 2.4rem" class="rv">
+  <div style="margin:0 auto 2.4rem" class="rv sec-head">
     <span class="eyebrow">For referring providers</span>
     <h2 class="big">Partner with us</h2>
     <p style="font-size:1.07rem">We partner with healthcare providers across the United States to ensure patients receive specialized cognitive rehabilitation. Through timely access, seamless communication, and comprehensive reporting, we make it easy to integrate our services into your patients' continuum of care.</p>
